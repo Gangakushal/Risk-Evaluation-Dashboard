@@ -1,23 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import RiskChart from './Components/RiskChart';
+import RiskLegend from './Components/RiskLegend';
+import './App.css'; 
+
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Risk Evaluation Dashboard</h1>
+      <div className="chart-container">
+        <RiskChart />
+        <RiskLegend />
+      </div>
     </div>
   );
 }

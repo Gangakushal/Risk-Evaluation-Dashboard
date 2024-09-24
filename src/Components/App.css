@@ -1,0 +1,17 @@
+.chart-container {
+  width: 70%;
+}
+
+.chart-title {
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #512da8;
+}
+
+
+.risk-level {
+  margin-bottom: 10px;
+}
+
+
