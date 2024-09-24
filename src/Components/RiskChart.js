@@ -9,10 +9,10 @@ import {
   Tooltip,
   Legend,
 } from 'chart.js';
-import './App.css'; // Assuming you have an external CSS file for styling
+import annotationPlugin from 'chartjs-plugin-annotation';
 
-// Register necessary Chart.js components
-ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
+// Register necessary Chart.js components, including annotation
+ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, annotationPlugin);
 
 const RiskChart = () => {
   // Data for the chart
@@ -37,7 +37,7 @@ const RiskChart = () => {
     ],
   };
 
-  // Options for the chart
+  // Options for the chart, including annotation for arrows
   const options = {
     responsive: true,
     indexAxis: 'x', // Vertical bars
@@ -78,18 +78,73 @@ const RiskChart = () => {
           label: (context) => `Risk: ${context.raw}`, // Custom tooltip
         },
       },
+      annotation: {
+        annotations: {
+          highRisk: {
+            type: 'line',
+            yMin: 7,
+            yMax: 10,
+            borderColor: 'red',
+            borderWidth: 2,
+            label: {
+              enabled: true,
+              content: 'High Risk',
+              position: 'center',
+              backgroundColor: 'rgba(255, 99, 132, 0.7)',
+            },
+            arrowHeads: {
+              end: {
+                enabled: true,
+              },
+            },
+          },
+          mediumRisk: {
+            type: 'line',
+            yMin: 4,
+            yMax: 7.8,
+            borderColor: 'yellow',
+            borderWidth: 2,
+            label: {
+              enabled: true,
+              content: 'Medium Risk',
+              position: 'center',
+              backgroundColor: 'rgba(255, 206, 86, 0.7)',
+            },
+            arrowHeads: {
+              end: {
+                enabled: true,
+              },
+            },
+          },
+          lowRisk: {
+            type: 'line',
+            yMin: 1,
+            yMax: 4.9,
+            borderColor: 'teal',
+            borderWidth: 2,
+            label: {
+              enabled: true,
+              content: 'Low Risk',
+              position: 'center',
+              backgroundColor: 'rgba(75, 192, 192, 0.7)',
+            },
+            arrowHeads: {
+              end: {
+                enabled: true,
+              },
+            },
+          },
+        },
+      },
     },
   };
 
   return (
-    <div className="chart-container">
-      <h2 className="chart-title">Risk Evaluation Dashboard</h2>
+    <div className="w-full md:w-3/4 mx-auto">
+      <h2 className="text-2xl md:text-4xl font-semibold text-center mb-5 text-purple-700">
+        Risk Evaluation Dashboard
+      </h2>
       <Bar data={data} options={options} />
-      <div className="risk-legend">
-        <div className="risk-level high-risk">High Risk (Strong need for innovation)</div>
-        <div className="risk-level medium-risk">Medium Risk (Need for innovation)</div>
-        <div className="risk-level low-risk">Low Risk (Low need for innovation)</div>
-      </div>
     </div>
   );
 };

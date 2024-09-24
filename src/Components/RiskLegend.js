@@ -1,30 +1,19 @@
 import React from 'react';
 
 const RiskLegend = () => (
-    <div className="legend">
-        
-        <style jsx>{`
-      .legend {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        margin-left: 20px;
-      }
-      .legend-item {
-        display: flex;
-        align-items: center;
-        margin-bottom: 8px;
-      }
-      .legend-item span {
-        display: inline-block;
-        width: 20px;
-        height: 20px;
-        margin-right: 10px;
-      }
-      .high-risk { background-color: rgba(255, 99, 132, 0.6); }
-      .medium-risk { background-color: rgba(255, 206, 86, 0.6); }
-      .low-risk { background-color: rgba(75, 192, 192, 0.6); }
-    `}</style>
+    <div className="flex flex-col items-start mt-8 md:ml-8">
+      <div className="flex items-center mb-3">
+        <span className="w-5 h-5 bg-red-400 inline-block mr-3"></span>
+        <span>High Risk (Strong need for innovation)</span>
+      </div>
+      <div className="flex items-center mb-3">
+        <span className="w-5 h-5 bg-yellow-400 inline-block mr-3"></span>
+        <p>Medium Risk (Need for innovation)</p>
+      </div>
+      <div className="flex items-center mb-3">
+        <span className="w-5 h-5 bg-teal-400 inline-block mr-3"></span>
+        <span>Low Risk (Low need for innovation)</span>
+      </div>
     </div>
 );
 
